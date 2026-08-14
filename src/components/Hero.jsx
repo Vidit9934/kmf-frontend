@@ -4,12 +4,12 @@ import { SiSpotify, SiYoutube } from 'react-icons/si'
 
 export default function Hero() {
   return (
-    <section id="home" className="hero-premium relative min-h-screen overflow-hidden pt-24 lg:pt-28">
+    <section id="home" className="hero-premium relative overflow-hidden pt-20 pb-14 lg:min-h-screen lg:pt-28 lg:pb-0">
       <div className="hero-premium-noise" aria-hidden="true" />
       <div className="hero-premium-wave" aria-hidden="true" />
 
       <div className="section-padding max-w-[1400px] mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-10 xl:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 xl:gap-16 items-center">
           <div>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -69,7 +69,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 36 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative hidden lg:block"
+            className="relative mt-6 lg:mt-0"
           >
             <div className="hero-trust-chip">
               <FiUsers />
