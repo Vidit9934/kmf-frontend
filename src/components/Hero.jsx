@@ -69,7 +69,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 36 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative mt-6 lg:mt-0"
+            className="relative mt-8 lg:mt-0 flex flex-col items-center lg:items-start"
           >
             <div className="hero-trust-chip">
               <FiUsers />
