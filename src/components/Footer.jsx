@@ -44,7 +44,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#090A0E', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+    <footer id="about" style={{ background: 'rgba(9,10,14,0.78)', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
       <div className="section-padding max-w-[1400px] mx-auto py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
           {/* Brand column */}

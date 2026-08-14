@@ -46,7 +46,7 @@ const BOKEH = [
 function CountFlip({ value, label }) {
   return (
     <div className="flex flex-col items-center">
-      <div className="w-16 h-16 rounded-2xl flex items-center justify-center font-mono font-black text-3xl text-white"
+      <div className="w-16 h-16 rounded-2xl flex items-center justify-center font-mono font-black text-3xl text-white numeric-accent"
         style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)' }}>
         {String(value ?? 0).padStart(2, '0')}
       </div>
@@ -109,12 +109,12 @@ export default function CompetitionBanner() {
               <span className="text-xs font-mono font-medium tracking-widest uppercase text-gold-DEFAULT">Monthly Competition</span>
             </div>
 
-            <h2 className="font-display text-5xl md:text-6xl font-black text-white leading-[1.05] mb-5">
+            <h2 className="premium-section-title text-white mb-5">
               Win Free<br/>
               <span className="text-gold-gradient">Music Promotion</span>
             </h2>
 
-            <p className="text-white/55 text-base leading-relaxed mb-2 max-w-lg">
+            <p className="premium-subtext mb-2 max-w-lg">
               Every month, one artist wins a complete{' '}
               <span className="text-white font-semibold">Spotify Playlist Magic</span> campaign worth{' '}
               <span className="text-gold-DEFAULT font-mono font-bold">₹11,000</span> plus KMF social shoutout and a dedicated blog feature.
@@ -184,7 +184,7 @@ export default function CompetitionBanner() {
                         <p className="text-white/30 text-xs">"{w.track}" · {w.month}</p>
                       </div>
                     </div>
-                    <span className="text-xs font-mono font-bold px-3 py-1 rounded-full flex-shrink-0"
+                    <span className="text-xs font-mono font-bold px-3 py-1 rounded-full flex-shrink-0 numeric-accent"
                       style={{ background: `${w.clr}18`, color: w.clr, border: `1px solid ${w.clr}28` }}>
                       {w.streams}
                     </span>

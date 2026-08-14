@@ -102,7 +102,7 @@ export default function BlogPreview() {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
 
   return (
-    <section ref={ref} id="blog" className="py-24" style={{ background: '#0A0B10' }}>
+    <section ref={ref} id="blog" className="py-24" style={{ background: 'rgba(10,11,16,0.72)' }}>
       <div className="section-padding max-w-[1400px] mx-auto">
         {/* Header */}
         <motion.div
@@ -113,10 +113,13 @@ export default function BlogPreview() {
         >
           <div>
             <span className="section-label">Blog</span>
-            <h2 className="font-display text-4xl md:text-5xl font-black text-white mt-3">
+            <h2 className="premium-section-title text-white mt-3">
               Music Marketing<br />
               <span className="text-gold-gradient">Insights & Strategy</span>
             </h2>
+            <p className="premium-subtext mt-4 max-w-xl">
+              Practical release intelligence, growth frameworks, and artist-first playbooks.
+            </p>
           </div>
           <a
             href="/blog"

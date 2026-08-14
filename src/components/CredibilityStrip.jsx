@@ -1,66 +1,95 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { FiMusic } from 'react-icons/fi'
 
 const artists = [
-  { name: 'Aditya Rikhari', song: 'Lajwab', streams: '8M+ Streams', color: '#7C3AED' },
-  { name: 'Riar Saab', song: 'Waade', streams: '12M+ Streams', color: '#DC2626' },
-  { name: 'Gajendra Verma', song: 'Good Vibes Only', streams: '15M+ Streams', color: '#059669' },
-  { name: 'Shubh', song: 'Supreme', streams: '25M+ Streams', color: '#D97706' },
-  { name: 'Krantiveer', song: 'Kagaz', streams: '5M+ Streams', color: '#C9A84C' },
-  { name: 'Shubh', song: 'Moves', streams: '20M+ Streams', color: '#D97706' },
+  {
+    name: 'Krantiveer',
+    song: 'Kagaz',
+    genre: 'Hindi Pop',
+    streams: '5M+ Streams',
+    image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    name: 'Riar Saab',
+    song: 'Waade',
+    genre: 'Punjabi Indie',
+    streams: '12M+ Streams',
+    image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    name: 'Aditya Rikhari',
+    song: 'Lajwab',
+    genre: 'Soul Pop',
+    streams: '8M+ Streams',
+    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    name: 'Gajendra Verma',
+    song: 'Good Vibes Only',
+    genre: 'Commercial Pop',
+    streams: '15M+ Streams',
+    image: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    name: 'Shubh',
+    song: 'Supreme',
+    genre: 'Hip-Hop',
+    streams: '25M+ Streams',
+    image: 'https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    name: 'Mehak Singh',
+    song: 'Teri Yaadon Mein',
+    genre: 'Indie Ballad',
+    streams: '4.2M+ Streams',
+    image: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80',
+  },
 ]
 
-const labels = [
-  'Zee Music', 'Saregama', 'Meet Bros', 'B-Town Music',
-  'Town Films', 'Myra Music', 'Indie Independent', 'KMF Production',
-]
-
-function ArtistCard({ artist }) {
-  const initials = artist.name.split(' ').map(n => n[0]).join('')
+function ArtistCard({ artist, index, inView }) {
   return (
-      <div className="flex-shrink-0 rounded-xl p-4 flex items-center gap-3 mx-3 min-w-[200px] transition-all duration-300 group"
-        style={{ background: '#13151C', border: '1px solid rgba(255,255,255,0.07)' }}
-        onMouseEnter={e => { e.currentTarget.style.borderColor='rgba(201,168,76,0.30)'; }}
-        onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.07)'; }}
-      >
-      {/* Avatar placeholder */}
-      <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-bold text-white text-sm flex-shrink-0"
-        style={{ background: `linear-gradient(135deg, ${artist.color}88, ${artist.color}33)` }}
-      >
-        {initials}
-      </div>
-      <div>
-        <p className="text-white text-sm font-semibold leading-tight">{artist.name}</p>
-        <p className="text-white/50 text-xs">{artist.song}</p>
-        <p className="text-xs font-mono font-medium mt-0.5" style={{ color: artist.color }}>{artist.streams}</p>
-      </div>
-    </div>
-  )
-}
-
-function LabelPill({ label }) {
-  return (
-    <div className="flex-shrink-0 mx-3 px-5 py-2.5 rounded-full transition-colors duration-300"
-      style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}
-      onMouseEnter={e => { e.currentTarget.style.borderColor='rgba(201,168,76,0.35)'; }}
-      onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.08)'; }}
+    <motion.article
+      initial={{ opacity: 0, y: 22 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.06 }}
+      className="group relative rounded-2xl overflow-hidden flex-shrink-0 w-[390px] grid grid-cols-[43%_57%] card-3d"
+      style={{
+        background: 'linear-gradient(160deg, rgba(22,24,31,0.96) 0%, rgba(12,13,18,0.95) 100%)',
+        border: '1px solid rgba(201,168,76,0.18)',
+        boxShadow: '0 18px 30px rgba(0,0,0,0.45)',
+      }}
+      whileHover={{ y: -8, rotateY: 4, rotateX: 2, borderColor: 'rgba(201,168,76,0.36)' }}
+      whileTap={{ scale: 0.98 }}
+      transformTemplate={({ rotateY, rotateX, y }) =>
+        `perspective(900px) rotateY(${rotateY || 0}deg) rotateX(${rotateX || 0}deg) translateY(${y || 0}px)`
+      }
     >
-      <span className="text-white/70 text-sm font-medium tracking-wide">{label}</span>
-    </div>
+      <div className="relative h-full min-h-[220px] overflow-hidden">
+        <img
+          src={artist.image}
+          alt={`${artist.name} performing`}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(8,9,12,0.82) 0%, rgba(8,9,12,0.2) 55%, transparent 100%)' }} />
+      </div>
+
+      <div className="relative p-5">
+        <div className="mesh-overlay" aria-hidden="true" />
+        <p className="text-white font-display text-[1.5rem] leading-[1.02]">{artist.name}</p>
+        <p className="text-white/62 text-[0.68rem] mt-1 tracking-[0.18em] uppercase">{artist.genre}</p>
+        <p className="text-white/88 text-[1rem] mt-3 leading-snug">"{artist.song}"</p>
+        <p className="text-gold-DEFAULT text-xs font-mono font-medium mt-3 numeric-accent">{artist.streams}</p>
+      </div>
+    </motion.article>
   )
 }
 
 export default function CredibilityStrip() {
   const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true })
-
-  // Duplicate for seamless loop
-  const doubledArtists = [...artists, ...artists]
-  const doubledLabels = [...labels, ...labels]
+  const movingArtists = [...artists, ...artists]
 
   return (
-    <section ref={ref} id="artists" className="py-20 overflow-hidden border-y" style={{ background: '#0D0F16', borderColor: 'rgba(255,255,255,0.07)' }}>
+    <section ref={ref} id="artists" className="py-20 overflow-x-hidden overflow-y-visible border-y" style={{ background: 'rgba(13,15,22,0.72)', borderColor: 'rgba(255,255,255,0.07)' }}>
       <div className="section-padding max-w-[1400px] mx-auto mb-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -68,44 +97,25 @@ export default function CredibilityStrip() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <span className="section-label">Artist Credibility</span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mt-2">
+          <span className="section-label">Artists We Have Worked With</span>
+          <h2 className="premium-section-title soft-title-glow text-white mt-2">
             Trusted by Artists You Know
           </h2>
-          <p className="text-white/50 mt-3 text-sm max-w-lg mx-auto">
-            From indie to Bollywood — KMF Media has promoted the artists defining Indian music right now
+          <p className="premium-subtext mt-3 max-w-2xl mx-auto">
+            From indie to Bollywood, we have worked with artists across genres and built campaigns around their unique sound.
           </p>
         </motion.div>
       </div>
 
-      {/* Artists row */}
-      <div className="relative mb-5 overflow-hidden">
+      <div className="relative overflow-hidden mb-10 pt-3">
         <div
-          className="flex"
-          style={{ animation: 'marquee 35s linear infinite' }}
+          className="flex gap-6 items-stretch w-max"
+          style={{ animation: 'marquee 38s linear infinite' }}
           onMouseEnter={(e) => (e.currentTarget.style.animationPlayState = 'paused')}
           onMouseLeave={(e) => (e.currentTarget.style.animationPlayState = 'running')}
         >
-          {doubledArtists.map((artist, i) => (
-            <ArtistCard key={i} artist={artist} />
-          ))}
-        </div>
-      </div>
-
-      {/* Labels row */}
-      <div className="relative overflow-hidden">
-        <div
-          className="flex items-center"
-          style={{ animation: 'marquee 55s linear infinite' }}
-          onMouseEnter={(e) => (e.currentTarget.style.animationPlayState = 'paused')}
-          onMouseLeave={(e) => (e.currentTarget.style.animationPlayState = 'running')}
-        >
-          {doubledLabels.map((label, i) => (
-            <LabelPill key={i} label={label} />
-          ))}
-          {/* Label with icon separator */}
-          {doubledLabels.map((label, i) => (
-            <LabelPill key={`b-${i}`} label={label} />
+          {movingArtists.map((artist, i) => (
+            <ArtistCard key={`${artist.name}-${artist.song}-${i}`} artist={artist} index={i % artists.length} inView={inView} />
           ))}
         </div>
       </div>

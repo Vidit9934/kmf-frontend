@@ -17,7 +17,7 @@ export default function PackageWidget() {
   }
 
   return (
-    <section ref={ref} className="py-20" style={{ background: '#0D0F16' }}>
+    <section ref={ref} id="dev" className="py-20" style={{ background: 'rgba(13,15,22,0.72)' }}>
       <div className="section-padding max-w-[900px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -39,15 +39,15 @@ export default function PackageWidget() {
               <FiZap size={14} className="text-black" />
             </div>
             <span className="text-gold-DEFAULT text-xs font-mono font-medium tracking-widest uppercase">
-              AI Package Recommender
+              Dev + AI Recommender
             </span>
           </div>
 
-          <h2 className="font-display text-3xl md:text-4xl font-black text-white mb-3 leading-tight">
+          <h2 className="premium-section-title no-title-glow text-white mb-3 leading-tight">
             Paste Your Track Link.<br />
             <span className="text-gold-gradient">Get Your Growth Plan.</span>
           </h2>
-          <p className="text-white/50 text-sm mb-8 max-w-lg leading-relaxed">
+          <p className="premium-subtext mb-8 max-w-lg leading-relaxed">
             Our AI analyses your Spotify or YouTube link and recommends the perfect promotion
             package for your genre, audience, and budget. Free. Instant.
           </p>

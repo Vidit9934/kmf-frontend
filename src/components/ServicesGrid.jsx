@@ -22,22 +22,29 @@ function ServiceCard({ service, inView, index }) {
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.06 }}
-      className="relative flex-shrink-0 flex flex-col group"
+      className="relative flex-shrink-0 flex flex-col group card-3d"
       style={{
-        background: '#13151C',
-        border: '1px solid rgba(255,255,255,0.07)',
+        background: 'linear-gradient(170deg, rgba(23,25,33,0.98) 0%, rgba(12,13,19,0.96) 100%)',
+        border: '1px solid rgba(201,168,76,0.16)',
         borderRadius: '20px',
-        padding: '24px',
-        width: '280px',
-        minHeight: '320px',
+        padding: '22px',
+        width: '348px',
+        minHeight: '286px',
         transition: 'transform 0.35s ease, box-shadow 0.35s ease, border-color 0.3s ease',
       }}
       whileHover={{
-        y: -7,
-        boxShadow: `0 20px 55px rgba(0,0,0,0.65), 0 0 20px ${service.iconColor}18`,
+        y: -8,
+        rotateY: 3,
+        rotateX: 2,
+        boxShadow: `0 26px 60px rgba(0,0,0,0.68), 0 0 20px ${service.iconColor}18`,
         borderColor: `${service.iconColor}40`,
       }}
+      transformTemplate={({ rotateY, rotateX, y }) =>
+        `perspective(1000px) rotateY(${rotateY || 0}deg) rotateX(${rotateX || 0}deg) translateY(${y || 0}px)`
+      }
     >
+      <div className="mesh-overlay" aria-hidden="true" />
+
       {/* Top neon border line on hover */}
       <div className="absolute top-0 left-0 right-0 h-px rounded-t-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-400"
         style={{ background: `linear-gradient(90deg, transparent, ${service.iconColor}, transparent)` }} />
@@ -59,13 +66,13 @@ function ServiceCard({ service, inView, index }) {
         <span style={{ color: service.iconColor }}>{service.icon}</span>
       </div>
 
-      <h3 className="font-display text-lg font-bold text-white mb-2">{service.title}</h3>
-      <p className="text-white/45 text-sm leading-relaxed flex-1">{service.description}</p>
+      <h3 className="font-display text-[1.55rem] font-semibold text-white mb-2 leading-tight">{service.title}</h3>
+      <p className="text-white/60 text-[0.95rem] leading-relaxed flex-1 max-w-[35ch]">{service.description}</p>
 
       <div className="mt-6 pt-5 flex items-end justify-between"
-        style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+        style={{ borderTop: '1px solid rgba(201,168,76,0.15)' }}>
         <div>
-          <div className="font-mono font-black text-2xl" style={{ color: service.iconColor }}>{service.price}</div>
+          <div className="font-mono font-black text-2xl numeric-accent" style={{ color: service.iconColor }}>{service.price}</div>
           <div className="text-white/30 text-xs mt-0.5">{service.from}</div>
         </div>
         <a href={service.href} className="flex items-center gap-1.5 text-xs font-semibold text-white/40 hover:text-white transition-colors">
@@ -93,7 +100,7 @@ export default function ServicesGrid() {
   }
 
   return (
-    <section ref={ref} id="services" className="py-24 overflow-hidden" style={{ background: '#0A0B10' }}>
+    <section ref={ref} id="services" className="py-24 overflow-x-hidden overflow-y-visible" style={{ background: 'rgba(10,11,16,0.72)' }}>
       <div className="section-padding max-w-[1400px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -102,10 +109,14 @@ export default function ServicesGrid() {
         >
           <div>
             <span className="section-label">Services</span>
-            <h2 className="font-display text-4xl md:text-5xl font-black text-white mt-3">
-              Grow Your Music—<br/>
+            <h2 className="premium-section-title soft-title-glow text-white mt-3">
+              Artist Campaign Systems
+              <br/>
               <span className="text-gold-gradient">Starting from ₹5,000</span>
             </h2>
+            <p className="premium-subtext mt-4 max-w-xl">
+              Built for release weeks, momentum months, and long-term audience growth.
+            </p>
           </div>
           <div className="flex items-center gap-3">
             <button onClick={() => scroll(-1)} disabled={atStart}
@@ -130,7 +141,7 @@ export default function ServicesGrid() {
         {/* pt-4 gives headroom — cards use internal badge so no overflow clip */}
         <div
           ref={trackRef}
-          className="flex gap-5 overflow-x-auto pb-6"
+          className="flex gap-6 overflow-x-auto pt-4 pb-8"
           style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch', scrollSnapType: 'x mandatory', msOverflowStyle: 'none' }}
           onScroll={(e) => {
             const el = e.currentTarget

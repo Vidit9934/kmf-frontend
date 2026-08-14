@@ -22,8 +22,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Syne', 'sans-serif'],
-        sans: ['Inter', 'sans-serif'],
+        display: ['Bodoni Moda', 'Fraunces', 'serif'],
+        sans: ['Plus Jakarta Sans', 'Manrope', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       animation: {

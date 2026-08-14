@@ -34,7 +34,7 @@ export default function Testimonials() {
   const next = () => { setDir(1); setCurrent(c => (c + 1) % QUOTES.length) }
 
   return (
-    <section ref={ref} className="py-28" style={{ background: '#0A0B10' }}>
+    <section ref={ref} className="py-28" style={{ background: 'rgba(10,11,16,0.72)' }}>
       <div className="section-padding max-w-[1400px] mx-auto">
 
         <motion.div
@@ -43,7 +43,7 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <span className="section-label">Artist Stories</span>
-          <h2 className="font-display text-4xl md:text-5xl font-black text-white mt-3">
+          <h2 className="premium-section-title text-white mt-3">
             Results That <span className="text-gold-gradient">Speak for Themselves</span>
           </h2>
         </motion.div>

@@ -33,7 +33,7 @@ export default function HowItWorks() {
   const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true })
 
   return (
-    <section ref={ref} id="how-it-works" className="py-24 relative" style={{ background: '#0D0F16' }}>
+    <section ref={ref} id="how-it-works" className="py-24 relative" style={{ background: 'rgba(13,15,22,0.72)' }}>
       <div className="section-padding max-w-[1400px] mx-auto">
         {/* Header */}
         <motion.div
@@ -43,11 +43,11 @@ export default function HowItWorks() {
           className="text-center mb-16"
         >
           <span className="section-label">How It Works</span>
-          <h2 className="font-display text-4xl md:text-5xl font-black text-white mt-3 mb-4">
+          <h2 className="premium-section-title text-white mt-3 mb-4">
             From Signup to Streams —<br />
             <span className="text-gold-gradient">In 3 Simple Steps</span>
           </h2>
-          <p className="text-white/50 max-w-xl mx-auto">
+          <p className="premium-subtext max-w-xl mx-auto">
             No complicated onboarding. No back-and-forth emails. Just your music, our platform, and real growth.
           </p>
         </motion.div>
