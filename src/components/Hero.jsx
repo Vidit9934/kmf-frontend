@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="hero-premium-wave" aria-hidden="true" />
 
       <div className="section-padding max-w-[1400px] mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 xl:gap-16 items-center">
+        <div className="grid grid-cols-[54%_46%] lg:grid-cols-2 gap-3 lg:gap-8 xl:gap-16 items-center">
           <div>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -39,7 +39,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="text-white/60 text-lg leading-relaxed mt-6 max-w-[510px]"
+              className="text-white/60 text-sm lg:text-lg leading-relaxed mt-4 lg:mt-6 max-w-[510px] hidden sm:block lg:block"
             >
               Join <span className="text-gold-DEFAULT font-semibold numeric-accent">2,000+ artists</span> who trust KMF Media for real
               growth on Spotify, YouTube, and beyond. Your next chapter starts here.
@@ -49,7 +49,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35 }}
-              className="flex flex-wrap gap-4 mt-8"
+              className="flex flex-wrap gap-3 mt-5 lg:mt-8"
             >
               <a href="#signup" className="btn-gold px-8 py-4 text-base">
                 <span className="inline-flex items-end gap-[2px]">
@@ -69,7 +69,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 36 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative mt-8 lg:mt-0 flex flex-col items-center lg:items-start"
+            className="relative flex flex-col items-center"
           >
             <div className="hero-trust-chip">
               <FiUsers />
